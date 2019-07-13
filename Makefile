@@ -16,3 +16,6 @@ test: $(TEST_OUTPUT)
 $(TEST_OUTPUT): $(PLINK) $(TEST) $(TEST_EXPECTED)
 	cd $(TEST_DIR) && ../$(PLINK) $$( basename $(TEST) )
 	diff -qsB $(TEST_EXPECTED) $(TEST_OUTPUT)
+
+clean:
+	-$(RM) $(TEST_OUTPUT)
