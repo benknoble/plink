@@ -1,3 +1,4 @@
+#! /usr/bin/env ../Plink.pm
 BREWFILE = brew/Brewfile
 REQUIREMENTS = requirements.txt
 XDG_CONFIG_HOME = $(HOME)/.config
