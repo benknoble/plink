@@ -117,6 +117,6 @@ $(HOME)/.vim: $(LINKS)vim
 symlink: $(SYMLINKS)
 
 $(SYMLINKS):
-	 if test -e $@ ; then rm -rf $@ ; fi
-	 ln -s $$(realpath $?) $@
-	 @echo $@ '->' $$(realpath $?)
+	if test -e $@ ; then rm -rf $@ ; fi
+	ln -s $$(realpath $?) $@
+	@echo $@ '->' $$(realpath $?)
