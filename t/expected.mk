@@ -114,7 +114,7 @@ $(HOME)/.tmux.conf: $(LINKS)tmux.conf
 $(HOME)/.vim: $(LINKS)vim
 
 # symlink: ensure symlinks created
-symlink: $(SYMLINKS) Makefile
+symlink: Makefile $(SYMLINKS)
 
 $(SYMLINKS):
 	if test -e $@ ; then rm -rf $@ ; fi
