@@ -16,10 +16,10 @@ default:
 	@grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 
 # install: bootstrap the dotfiles
-install: symlink $(FEATURES)
+install: Makefile symlink $(FEATURES)
 
 # update: update the dotfiles
-update: pull_master update_submodules symlink brew_check vimtags pip
+update: Makefile pull_master update_submodules symlink brew_check vimtags pip
 
 # vimtags: regenerate tags for vim helpfiles
 vimtags:
@@ -42,9 +42,9 @@ USER_GITK = $(XDG_CONFIG_HOME)/git/gitk
 DRACULA_GITK = Dracula/gitk/gitk
 
 # git_extras: install git extras
-git_extras: $(USER_GITK)
+git_extras: Makefile $(USER_GITK)
 
-$(USER_GITK): $(DRACULA_GITK)
+$(USER_GITK): Makefile $(DRACULA_GITK)
 	[ -r "$?" ]
 	mkdir -p "$$(dirname $@)"
 	cp -iv -- "$?" "$@"
@@ -60,7 +60,7 @@ brew_install:
 	chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 
 # pip: install from requirements
-pip: $(REQUIREMENTS)
+pip: Makefile $(REQUIREMENTS)
 	python3 -m pip install --user --requirement $(REQUIREMENTS)
 
 pull_master:
@@ -72,7 +72,7 @@ update_submodules:
 	git submodule update
 
 # brew_check: check Brewfile with bundle
-brew_check: $(BREWFILE)
+brew_check: Makefile $(BREWFILE)
 	-brew bundle check --file="$(BREWFILE)"
 
 LINKS = links/
@@ -114,9 +114,12 @@ $(HOME)/.tmux.conf: $(LINKS)tmux.conf
 $(HOME)/.vim: $(LINKS)vim
 
 # symlink: ensure symlinks created
-symlink: $(SYMLINKS)
+symlink: $(SYMLINKS) Makefile
 
 $(SYMLINKS):
 	if test -e $@ ; then rm -rf $@ ; fi
 	ln -s $$(realpath $?) $@
 	@echo $@ '->' $$(realpath $?)
+
+Makefile: test.plink
+	$$(realpath $?)
