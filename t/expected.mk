@@ -1,6 +1,4 @@
-# ensure sh
 SHELL = /bin/sh
-# clear out suffixes
 .SUFFIXES:
 
 BREWFILE = brew/Brewfile
