@@ -15,10 +15,10 @@ test: $(TEST_OUTPUT)
 
 $(TEST_OUTPUT): $(PLINK) $(TEST) $(TEST_EXPECTED)
 	cd $(TEST_DIR) && ../$(PLINK) $$( basename $(TEST) )
-	diff -qswB $(TEST_EXPECTED) $(TEST_OUTPUT)
+	diff -b $(TEST_EXPECTED) $(TEST_OUTPUT)
 
 view_test: $(TEST_OUTPUT)
-	vimdiff $(TEST_EXPECTED) $(TEST_OUTPUT)
+	vimdiff +'set diffopt+=iwhite' $(TEST_EXPECTED) $(TEST_OUTPUT)
 
 clean:
 	-$(RM) $(TEST_OUTPUT)
