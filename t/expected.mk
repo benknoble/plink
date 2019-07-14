@@ -75,7 +75,8 @@ update_submodules:
 brew_check: $(BREWFILE)
 	-brew bundle check --file="$(BREWFILE)"
 
-LINKS = links
+LINKS = links/
+
 SYMLINKS = \
 $(HOME)/.ackrc \
 $(HOME)/.bash \
@@ -95,22 +96,22 @@ $(HOME)/.tmux.conf \
 $(HOME)/.vim \
 
 
-$(HOME)/.ackrc: $(LINKS)/ackrc
-$(HOME)/.bash: $(LINKS)/bash
-$(HOME)/.bash_profile: $(LINKS)/bash_profile
-$(HOME)/.bashrc: $(LINKS)/bashrc
-$(HOME)/.bin: $(LINKS)/bin
-$(HOME)/.ctags.d: $(LINKS)/ctags.d
-$(HOME)/.git_template: $(LINKS)/git_template
-$(HOME)/.gitconfig: $(LINKS)/gitconfig
-$(HOME)/.gitignore_global: $(LINKS)/gitignore_global
-$(HOME)/.gitshrc: $(LINKS)/gitshrc
-$(HOME)/.inputrc: $(LINKS)/inputrc
-$(HOME)/.jupyter: $(LINKS)/jupyter
-$(HOME)/.pythonrc: $(LINKS)/pythonrc
-$(HOME)/.tmplr: $(LINKS)/tmplr
-$(HOME)/.tmux.conf: $(LINKS)/tmux.conf
-$(HOME)/.vim: $(LINKS)/vim
+$(HOME)/.ackrc: $(LINKS)ackrc
+$(HOME)/.bash: $(LINKS)bash
+$(HOME)/.bash_profile: $(LINKS)bash_profile
+$(HOME)/.bashrc: $(LINKS)bashrc
+$(HOME)/.bin: $(LINKS)bin
+$(HOME)/.ctags.d: $(LINKS)ctags.d
+$(HOME)/.git_template: $(LINKS)git_template
+$(HOME)/.gitconfig: $(LINKS)gitconfig
+$(HOME)/.gitignore_global: $(LINKS)gitignore_global
+$(HOME)/.gitshrc: $(LINKS)gitshrc
+$(HOME)/.inputrc: $(LINKS)inputrc
+$(HOME)/.jupyter: $(LINKS)jupyter
+$(HOME)/.pythonrc: $(LINKS)pythonrc
+$(HOME)/.tmplr: $(LINKS)tmplr
+$(HOME)/.tmux.conf: $(LINKS)tmux.conf
+$(HOME)/.vim: $(LINKS)vim
 
 # symlink: ensure symlinks created
 symlink: $(SYMLINKS)

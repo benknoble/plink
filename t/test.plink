@@ -72,7 +72,7 @@ git submodule update
 # brew_check: check Brewfile with bundle
 brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 
-LINKS = links
+LINKS = links/
 
            .ackrc <= ackrc
             .bash <= bash
