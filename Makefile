@@ -15,7 +15,7 @@ test: $(TEST_OUTPUT)
 
 $(TEST_OUTPUT): $(PLINK) $(TEST) $(TEST_EXPECTED)
 	cd $(TEST_DIR) && ../$(PLINK) $$( basename $(TEST) )
-	diff -qsB $(TEST_EXPECTED) $(TEST_OUTPUT)
+	diff -qswB $(TEST_EXPECTED) $(TEST_OUTPUT)
 
 view_test: $(TEST_OUTPUT)
 	vimdiff $(TEST_EXPECTED) $(TEST_OUTPUT)
