@@ -95,7 +95,6 @@ sub process_lines {
         }
         # !!
         elsif ($line =~ m/!!/) {
-            chomp $line;
             (my $target = process_deps($line, $outfname)) =~ s/!!\s*$//;
             $target = trim $target;
             unless ($target =~ /:/) {
