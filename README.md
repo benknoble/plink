@@ -81,7 +81,7 @@ become
 The list `commands` lasts until the line containing _exactly_ `!!`. Commands
 will be tab-indented.
 
-### Symlink (Fat-arrow) `\<=`
+### Symlink (Fat-arrow) `<=`
 
 The meat of the DSL. Lines like
 

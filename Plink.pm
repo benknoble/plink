@@ -273,7 +273,7 @@ become
 The list C<commands> lasts until the line containing I<exactly> C<!!>. Commands
 will be tab-indented.
 
-=head3 Symlink (Fat-arrow) C<\<=>
+=head3 Symlink (Fat-arrow) C<E<lt>=>
 
 The meat of the DSL. Lines like
 
