@@ -191,7 +191,8 @@ See ["#ENVIRONMENT"](#environment).
 
 # CAVEATS
 
-See the [Symlink section](#symlink-fat-arrow) for caveats on symlink implementations.
+See the [Specification](#plink-specification) for caveats on symlink
+implementations.
 
 # BUGS
 

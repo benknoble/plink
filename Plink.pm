@@ -391,7 +391,8 @@ See L</#ENVIRONMENT>.
 
 =head1 CAVEATS
 
-See the L<Symlink section|/#symlink-(fat-arrow)> for caveats on symlink implementations.
+See the L<Specification|/#plink-specification> for caveats on symlink
+implementations.
 
 =head1 BUGS
 
