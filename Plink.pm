@@ -1,6 +1,6 @@
 #! /usr/bin/env perl
 
-package Plink;
+package Plink v1.0.0;
 
 use v5.10;
 use strict;
