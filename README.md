@@ -210,4 +210,4 @@ See `LICENSE`.
 
 # SEE ALSO
 
-make(1), [https://github.com/benknoble/Dotfiles](https://github.com/benknoble/Dotfiles)
+make(1), [https://github.com/benknoble/Dotfiles](https://github.com/benknoble/Dotfiles), [https://github.com/benknoble/vim-plink](https://github.com/benknoble/vim-plink)

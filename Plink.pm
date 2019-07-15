@@ -410,4 +410,4 @@ See F<LICENSE>.
 
 =head1 SEE ALSO
 
-make(1), L<https://github.com/benknoble/Dotfiles>
+make(1), L<https://github.com/benknoble/Dotfiles>, L<https://github.com/benknoble/vim-plink>
