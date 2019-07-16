@@ -326,7 +326,7 @@ as input.
 
 =head2 Normal Usage
 
-Since Plink is a superset of make, your current makefile is valid under Plinkt
+Since Plink is a superset of make, your current makefile is valid under Plink
 and will be transformed to exactly itself. This means the quickest way to get
 started is to move your makefile to a C<.plink>-file, and edit the shebang to
 point to C<#! /usr/bin/env /path/to/Plink.pm>. If you don't have env(1), the
