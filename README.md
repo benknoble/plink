@@ -104,7 +104,7 @@ for any make target that wishes to depend on symlink-generation.
 Dotfiles are files under the make macro `$(LINKS)`. Due to the generation rule,
 if `$(LINKS)` is not set, the current directory is used. This can be useful to
 put all dotfiles under a directory named, e.g., `dots`. Then you want to
-include a link in your Plink file like
+include a line in your Plink file like
 
     LINKS = dots/
 
