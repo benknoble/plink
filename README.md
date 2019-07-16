@@ -93,7 +93,7 @@ Become part of a mapping. The output creates dependencies of the form
 
 for each fat-arrow, and also gives each the recipe
 
-    if test -e #@ ; then rm -rf $@ ; fi
+    if test -e $@ ; then rm -rf $@ ; fi
     ln -s $$(realpath $?) $@
     @echo $@ '->' $$(realpath $?)
 
