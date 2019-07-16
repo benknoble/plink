@@ -161,7 +161,7 @@ depends on the output file; do not specify pre-requisites in `[ square brackets
 _plink_ _$infname_, _$outfname_
 
 Implements the Plink specification, transforming the file named `infname` to
-`outfname`. Hands for STDIN and STDOUT are accepted, though STDIN has the
+`outfname`. Handles for STDIN and STDOUT are accepted, though STDIN has the
 side-effect that the Makefile rules now depend on the literal file `STDIN`.
 Similarly, STDOUT breaks the rule to make the generated Makefile.
 

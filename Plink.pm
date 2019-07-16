@@ -353,7 +353,7 @@ depends on the output file; do not specify pre-requisites in C<[ square brackets
 I<plink> I<$infname>, I<$outfname>
 
 Implements the Plink specification, transforming the file named C<infname> to
-C<outfname>. Hands for STDIN and STDOUT are accepted, though STDIN has the
+C<outfname>. Handles for STDIN and STDOUT are accepted, though STDIN has the
 side-effect that the Makefile rules now depend on the literal file C<STDIN>.
 Similarly, STDOUT breaks the rule to make the generated Makefile.
 
