@@ -15,7 +15,7 @@ test: $(TEST_OUTPUT)
 
 $(TEST_OUTPUT): $(PLINK) $(TEST) $(TEST_EXPECTED)
 	cd $(TEST_DIR) && ../$(PLINK) $$( basename $(TEST) )
-	diff -b $(TEST_EXPECTED) $(TEST_OUTPUT) >/dev/null 2>&1
+	diff -b $(TEST_EXPECTED) $(TEST_OUTPUT)
 
 view_test: $(TEST_OUTPUT)
 	vimdiff +'set diffopt+=iwhite' $(TEST_EXPECTED) $(TEST_OUTPUT)
