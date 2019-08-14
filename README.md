@@ -94,8 +94,8 @@ Become part of a mapping. The output creates dependencies of the form
 for each fat-arrow, and also gives each the recipe
 
     if test -e $@ ; then rm -rf $@ ; fi
-    ln -s $$(realpath $?) $@
-    @echo $@ '->' $$(realpath $?)
+    ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?) $@
+    @echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
 
 which creates the link. Finally, a target named `symlink` is provided which
 depends on all the `link_in_home`s provided: it is considered the public API
@@ -127,7 +127,7 @@ The Plink footer consists of the symlink target implementation and the
 following:
 
     MAKEFILE: INPUT
-    <TAB>$$(realpath $?)
+    <TAB>$$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
 
 `MAKEFILE` refers to the generated output, and `INPUT` to the Plink file used
 as input.

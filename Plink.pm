@@ -75,11 +75,11 @@ symlink: $outfname \$(SYMLINKS)
 
 \$(SYMLINKS):
 \tif test -e \$@ ; then rm -rf \$@ ; fi
-\tln -s \$\$(realpath \$?) \$@
-\t\@echo \$@ '->' \$\$(realpath \$?)
+\tln -s \$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$?) \$@
+\t\@echo \$@ '->' \$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$?)
 
 $outfname: $infname
-\t\$\$(realpath \$?)
+\t\$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$?)
 FOOTER
 }
 
@@ -286,8 +286,8 @@ Become part of a mapping. The output creates dependencies of the form
 for each fat-arrow, and also gives each the recipe
 
     if test -e $@ ; then rm -rf $@ ; fi
-    ln -s $$(realpath $?) $@
-    @echo $@ '->' $$(realpath $?)
+    ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?) $@
+    @echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
 
 which creates the link. Finally, a target named C<symlink> is provided which
 depends on all the C<link_in_home>s provided: it is considered the public API
@@ -319,7 +319,7 @@ The Plink footer consists of the symlink target implementation and the
 following:
 
     MAKEFILE: INPUT
-    <TAB>$$(realpath $?)
+    <TAB>$$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
 
 C<MAKEFILE> refers to the generated output, and C<INPUT> to the Plink file used
 as input.
