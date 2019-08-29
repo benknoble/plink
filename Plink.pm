@@ -1,15 +1,14 @@
 #! /usr/bin/env perl
 
+use v5.12;
+
 package Plink v1.0.0;
 
-use v5.10;
 use strict;
 use warnings;
 use autodie;
 
 use open ':locale';
-# implicit with
-# use v5.10;
 use feature 'unicode_strings';
 
 use Exporter 'import';
