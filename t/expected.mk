@@ -118,8 +118,8 @@ symlink: Makefile $(SYMLINKS)
 
 $(SYMLINKS):
 	if test -e $@ ; then rm -rf $@ ; fi
-	ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?) $@
-	@echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
+	ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,") $@
+	@echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,")
 
 Makefile: test.plink
 	$$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)

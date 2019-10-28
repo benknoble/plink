@@ -94,8 +94,8 @@ Become part of a mapping. The output creates dependencies of the form
 for each fat-arrow, and also gives each the recipe
 
     if test -e $@ ; then rm -rf $@ ; fi
-    ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?) $@
-    @echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
+    ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,") $@
+    @echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,")
 
 which creates the link. Finally, a target named `symlink` is provided which
 depends on all the `link_in_home`s provided: it is considered the public API
