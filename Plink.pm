@@ -68,17 +68,19 @@ HEADER
 
 sub print_footer {
     my ($out, $outfname, $infname) = @_;
+    my $relpath = '$$(python -c "from os.path import *; print(relpath(\'$?\', start=dirname(\'$@\')))")';
+    my $abspath = '$$(python -c "from os.path import *; print(abspath(\'$?\'))")';
     print $out <<FOOTER;
 # symlink: ensure symlinks created
 symlink: $outfname \$(SYMLINKS)
 
 \$(SYMLINKS):
-\tif test -e \$@ ; then rm -rf \$@ ; fi
-\tln -s \$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$? | sed "s,^\$(HOME)/,,") \$@
-\t\@echo \$@ '->' \$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$? | sed "s,^\$(HOME)/,,")
+\tif test -e \$@ || test -L \$@ ; then rm -rf \$@ ; fi
+\tln -s $relpath \$@
+\t\@echo \$@ '->' $relpath
 
 $outfname: $infname
-\t\$\$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" \$?)
+\t$abspath
 FOOTER
 }
 
@@ -284,9 +286,9 @@ Become part of a mapping. The output creates dependencies of the form
 
 for each fat-arrow, and also gives each the recipe
 
-    if test -e $@ ; then rm -rf $@ ; fi
-    ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^\$(HOME)/,,") $@
-    @echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^\$(HOME)/,,")
+    if test -e $@ || test -L $@ ; then rm -rf $@ ; fi
+    ln -s $$(python -c "from os.path import *; print(relpath('$?', start=dirname('$@')))") $@
+    @echo $@ '->' $$(python -c "from os.path import *; print(relpath('$?', start=dirname('$@')))")
 
 which creates the link. Finally, a target named C<symlink> is provided which
 depends on all the C<link_in_home>s provided: it is considered the public API
@@ -318,7 +320,7 @@ The Plink footer consists of the symlink target implementation and the
 following:
 
     MAKEFILE: INPUT
-    <TAB>$$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
+    <TAB>$$(python -c "from os.path import *; print(abspath('$?'))")
 
 C<MAKEFILE> refers to the generated output, and C<INPUT> to the Plink file used
 as input.

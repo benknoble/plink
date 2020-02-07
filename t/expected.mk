@@ -117,9 +117,9 @@ $(HOME)/.vim: $(LINKS)vim
 symlink: Makefile $(SYMLINKS)
 
 $(SYMLINKS):
-	if test -e $@ ; then rm -rf $@ ; fi
-	ln -s $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,") $@
-	@echo $@ '->' $$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $? | sed "s,^$(HOME)/,,")
+	if test -e $@ || test -L $@ ; then rm -rf $@ ; fi
+	ln -s $$(python -c "from os.path import *; print(relpath('$?', start=dirname('$@')))") $@
+	@echo $@ '->' $$(python -c "from os.path import *; print(relpath('$?', start=dirname('$@')))")
 
 Makefile: test.plink
-	$$(python -c "import os,sys; print(os.path.abspath(sys.argv[1]))" $?)
+	$$(python -c "from os.path import *; print(abspath('$?'))")
